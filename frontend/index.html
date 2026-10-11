@@ -1,0 +1,149 @@
+<!doctype html>
+<!-- Autor: abeIA.co -->
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="KAM Jurídica — asesoría y representación jurídica confiable, cercana y a tu medida." />
+    <meta name="theme-color" content="#0a1f3d" />
+    <meta name="author" content="abeIA.co" />
+
+    <!-- Open Graph (valores por defecto; se actualizan por página en el frontend) -->
+    <meta property="og:site_name" content="KAM Jurídica" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="KAM Jurídica" />
+    <meta property="og:description" content="Asesoría y representación jurídica confiable, cercana y a tu medida." />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <title>KAM Jurídica</title>
+
+    <style>
+      /* Splash de carga inicial: se muestra antes de que monte la app.
+         Vue reemplaza el contenido de #app al montar, así que desaparece solo. */
+      #app {
+        min-height: 100vh;
+      }
+
+      .app-splash {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 22px;
+        background:
+          radial-gradient(1000px 500px at 50% -10%, rgba(201, 162, 75, 0.16), transparent 60%),
+          linear-gradient(160deg, #0a1f3d 0%, #06142a 100%);
+        color: #f7f4ee;
+        text-align: center;
+        font-family: 'Manrope', system-ui, 'Segoe UI', Roboto, sans-serif;
+        transition: opacity 0.45s ease, visibility 0.45s ease;
+      }
+
+      .app-splash.is-hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+      }
+
+      .app-splash__brand {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 14px;
+      }
+
+      .app-splash__icon {
+        width: 72px;
+        height: 72px;
+        animation: splash-float 2.4s ease-in-out infinite;
+      }
+
+      .app-splash__name {
+        font-family: 'Fraunces', Georgia, 'Times New Roman', serif;
+        font-size: 30px;
+        font-weight: 600;
+        letter-spacing: 0.02em;
+        color: #f7f4ee;
+      }
+
+      .app-splash__name span {
+        color: #e2bc63;
+      }
+
+      .app-splash__spinner {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        border: 3px solid rgba(201, 162, 75, 0.25);
+        border-top-color: #c9a24b;
+        animation: splash-spin 0.9s linear infinite;
+      }
+
+      .app-splash__text {
+        margin: 0;
+        font-size: 12px;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: rgba(247, 244, 238, 0.72);
+      }
+
+      @keyframes splash-spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @keyframes splash-float {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <div class="app-splash" id="app-splash" aria-hidden="true">
+      <div class="app-splash__brand">
+        <svg class="app-splash__icon" viewBox="0 0 64 64" aria-hidden="true">
+          <g stroke="#c9a24b" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="32" y1="9" x2="32" y2="52" />
+            <line x1="11" y1="15" x2="53" y2="15" />
+            <path d="M11 15 L11 29 a8 8 0 0 0 16 0 L27 15" />
+            <path d="M37 15 L37 29 a8 8 0 0 0 16 0 L53 15" />
+            <line x1="21" y1="52" x2="43" y2="52" />
+            <line x1="26" y1="57" x2="38" y2="57" />
+          </g>
+        </svg>
+        <div class="app-splash__name">KAM <span>Jurídica</span></div>
+      </div>
+      <div class="app-splash__spinner"></div>
+      <p class="app-splash__text">Cargando</p>
+    </div>
+
+    <script>
+      // Oculta el splash tras un tiempo mínimo para que se alcance a ver,
+      // con un fundido suave controlado por la clase .is-hidden.
+      setTimeout(function () {
+        var splash = document.getElementById('app-splash')
+        if (splash) splash.classList.add('is-hidden')
+      }, 1200)
+    </script>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
